@@ -2,13 +2,26 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
 super + Return
 	kitty
 
-# program launcher
 super + @space
-	dmenu_run
+	dmenu_run -nb '#292D3E' -nf '#EEFFFF'
+
+super + b
+	firefox-developer-edition
+
+super + e
+	emacsclient -c
+
+super + a
+	android-messages-desktop
+
+super + s
+	spotify --force-device-scale-factor=1.5
+
+super + c
+	slack
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -1,25 +1,22 @@
 #! /bin/sh
 
 sxhkd &
-optirun picom &
 dunst &
+optirun picom &
 
-# bspc monitor eDP1 -n 0 -d 1 2 3 4 5 6 7 8 9 10
-bspc monitor eDP1 -n 0 -d 1 2 3 4 5
-bspc monitor VIRTUAL2 -n 1 -d 6 7 8 9 10
+bspc monitor eDP1 -n 0 -d 1 2 3 4 5 6 7 8 9 10
+# bspc monitor eDP1 -n 0 -d 1 2 3 4 5
+# bspc monitor VIRTUAL2 -n 1 -d 6 7 8 9 10
 
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width         1
+bspc config window_gap           4
+bspc config top_padding          0
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc rule -a Emacs state=tiled
 
 feh --bg-center ~/pictures/mount_hood.jpg
 
