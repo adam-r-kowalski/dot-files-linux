@@ -19,7 +19,7 @@
 [colors]
 background = #292D3E
 background-alt = #242837
-foreground = #EEFFFF
+foreground = #1C1E20
 foreground-alt = #BFC7D5
 primary = #EEFFFF
 secondary = #EC6798
@@ -31,14 +31,17 @@ lime = #B9C244
 green = #61C766
 pink = #EC6798
 purple = #BE78D1
+cyan = #00C7DF
+amber = #EDB83F
+grey = #8C8C8C
+orange = #E57C46
+teal = #00B19F
+indigo = #6C77BB
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
 dpi = 260
 width = 100%
 height = 50
-;offset-x = 1%
-;offset-y = 1%
 radius = 0.0
 fixed-center = false
 
@@ -48,30 +51,25 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 0
-border-color = #00000000
+border-size = 4
+border-color = ${colors.background}
 
-padding-left = 0
-padding-right = 2
+padding = 1
 
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Fantasque Sans Mono:style=Regular:pixelsize=12;2"
-font-1 = "Material Icons:style=Regular:size=13;4"
+font-0 = "Fantasque Sans Mono:style=Regular:pixelsize=10;4"
+font-1 = "Material:style=Regular:pixelsize=10;8"
 
 modules-left = bspwm
-modules-right = xbacklight_i xbacklight alsa_i alsa wlan_i wlan battery_i battery temperature date powermenu
+modules-right = xbacklight_i xbacklight separator alsa_i alsa separator wlan_i wlan separator battery_i battery separator temperature_i temperature separator date_i date separator powermenu_i powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
 
 [module/bspwm]
 type = internal/bspwm
@@ -103,16 +101,11 @@ format-background = ${colors.lime}
 format-foreground = ${colors.foreground}
 format-padding = 1
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-5 = 
-ramp-6 = 
-ramp-7 = 
-ramp-8 = 
-ramp-9 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -146,13 +139,13 @@ format-disconnected-background = ${colors.purple}
 format-disconnected-foreground = ${colors.foreground}
 format-disconnected-padding = 1
 
-label-disconnected = 
+label-disconnected = 
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 
 [module/wlan]
 type = internal/network
@@ -172,19 +165,32 @@ format-disconnected-padding = 1
 label-connected = %essid%
 label-disconnected = "Disconnected"
 
-[module/date]
+[module/date_i]
 type = internal/date
+
 interval = 5
 
-date = " %Y-%m-%d"
-date-alt = " %Y-%m-%d"
+time = 
 
-time = %H:%M
-time-alt = %H:%M:%S
+format = <label>
+format-background = ${colors.amber}
+format-foreground = ${colors.foreground}
+format-padding = 1
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+label = %time%
+
+[module/date]
+type = internal/date
+
+interval = 5
+
+date = "%a %b %d %Y"
+time = "%I:%M %p"
+
+format = <label>
+format-background = ${colors.mf}
+format-foreground = ${colors.foreground}
+format-padding = 1
 
 label = %date% %time%
 
@@ -200,16 +206,16 @@ format-muted-background = ${colors.blue}
 format-muted-foreground = ${colors.red}
 format-muted-padding = 1
 
-label-muted = " "
+label-muted = 
 label-muted-foreground = ${colors.foreground}
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-ramp-volume-4 = 
-ramp-volume-5 = 
-ramp-volume-6 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
 
 [module/alsa]
 type = internal/alsa
@@ -239,7 +245,7 @@ poll-interval = 2
 time-format = %H:%M
 
 format-charging = <animation-charging>
-format-charging-background = ${colors.green}
+format-charging-background = ${colors.teal}
 format-charging-foreground = ${colors.foreground}
 format-charging-padding = 1
 
@@ -251,22 +257,31 @@ format-discharging-padding = 1
 label-charging = %percentage%%
 label-discharging = %percentage%%
 
-label-full = " "
-label-full-background = ${colors.green}
+label-full = 
+label-full-background = ${colors.teal}
 label-full-foreground = ${colors.foreground}
 label-full-padding = 1
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 
-animation-charging-0 = ""
-animation-charging-1 = ""
-animation-charging-2 = ""
-animation-charging-3 = ""
-animation-charging-4 = ""
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
 
 animation-charging-framerate = 750
 
@@ -293,60 +308,109 @@ format-discharging-padding = 1
 label-charging = %percentage%%
 label-discharging = %percentage%%
 
-label-full = Fully Charged
+label-full = 100%
 label-full-foreground = ${colors.foreground}
 label-full-background = ${colors.mf}
 label-full-padding = 1
 
+[module/temperature_i]
+type = internal/temperature
+
+interval = 0.5
+thermal-zone = 0
+warn-temperature = 80
+
+format = <ramp>
+format-background = ${colors.indigo}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+format-warn = <ramp>
+format-warn-background = ${colors.indigo}
+format-warn-foreground = ${colors.foreground}
+format-warn-padding = 1
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
 
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+interval = 0.5
+thermal-zone = 0
+warn-temperature = 80
+
+format = <label>
+format-background = ${colors.mf}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+format-warn = <label-warn>
+format-warn-background = ${colors.mf}
+format-warn-foreground = ${colors.red}
+format-warn-padding = 1
 
 label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-wran = %temperature-c%
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+[module/powermenu_i]
+type = custom/text
+
+content = 
+content-background = ${colors.cyan}
+content-foreground = ${colors.foreground}
+content-padding = 1
 
 [module/powermenu]
 type = custom/menu
 
 expand-right = true
 
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = shutdown
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
+menu-1-0 = back
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = systemctl reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = back
 menu-2-1-exec = menu-open-0
 
+format-spacing = 1 
+format-background = ${colors.mf}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+label-open = Power
+label-close = 
+
+label-separator = |
+
+label-open-foreground = ${colors.foreground}
+label-close-foreground = ${colors.red}
+label-separator-foreground = ${colors.grey}
+
+[module/separator]
+type = custom/text
+
+content = |
+content-background = ${colors.background}
+content-foreground = ${colors.background}
+content-padding = 0.5
+
 [settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+
 screenchange-reload = true
 
 [global/wm]
