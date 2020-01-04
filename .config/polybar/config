@@ -75,23 +75,24 @@ cursor-scroll = ns-resize
 type = internal/bspwm
 
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-background = ${colors.lime}
+label-focused-foreground = ${colors.foreground}
+label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-padding = 2
+label-occupied-background = ${colors.blue}
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
 
 label-urgent = %name%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-background = ${colors.orange}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-padding = 1
 
 label-empty = %name%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
+label-empty-background = ${colors.mf}
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
 
 [module/xbacklight_i]
 type = internal/xbacklight
