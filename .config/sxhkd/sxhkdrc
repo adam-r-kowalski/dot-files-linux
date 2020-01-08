@@ -3,7 +3,7 @@
 #
 
 super + Return
-	kitty
+	optirun kitty
 
 super + @space
 	dmenu_run -nb '#292D3E' -nf '#EEFFFF'
