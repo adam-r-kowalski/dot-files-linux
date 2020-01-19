@@ -23,7 +23,15 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-integration t
+        evil-want-keybinding nil)
   :config (evil-mode 1))
+
+(use-package evil-collection
+  :ensure t
+  :after evil
+  :config (evil-collection-init))
 
 (setq-default display-line-numbers 'relative
               indent-tabs-mode nil)
@@ -72,7 +80,8 @@
 
 (use-package magit
   :ensure t
-  :commands magit)
+  :commands magit
+  :init (add-hook 'smerge-mode-hook #'evil-normalize-keymaps))
 
 (use-package evil-magit
   :after magit
@@ -97,7 +106,6 @@
  "." 'counsel-find-file
  "f" 'counsel-projectile-find-file
  "x" 'counsel-M-x
- "d" 'counsel-find-dir
  "b" 'counsel-switch-buffer
  "G" 'counsel-projectile-git-grep
  "g" 'counsel-projectile-rg
@@ -106,7 +114,8 @@
  "m" 'magit
  "s" 'eshell
  "c" 'comment-line
- "w" '(nil :which-key "window"))
+ "w" '(nil :which-key "window")
+ "d" 'smerge-mode)
 
 (general-define-key
  :states 'visual
@@ -120,6 +129,7 @@
 
 (general-define-key 
  :states '(normal visual emacs)
+ :keymaps 'override
  :prefix "SPC w"
  "." 'counsel-find-file
  "/" 'evil-window-vsplit
@@ -181,14 +191,22 @@
 (use-package pdf-tools
   :ensure t)
 
+(general-evil-define-key '(normal visual) smerge-mode-map
+  :prefix ","
+  "n" 'smerge-next
+  "u" 'smerge-keep-upper
+  "l" 'smerge-keep-lower
+  "a" 'smerge-keep-all)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(doom-modeline-mode t)
  '(package-selected-packages
-   '(pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
+   '(evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

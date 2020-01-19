@@ -75,18 +75,18 @@ cursor-scroll = ns-resize
 type = internal/bspwm
 
 label-focused = %name%
-label-focused-background = ${colors.green}
-label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.green}
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-background = ${colors.blue}
-label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background}
+label-occupied-foreground = ${colors.blue}
 label-occupied-padding = 1
 
 label-urgent = %name%!
-label-urgent-background = ${colors.orange}
-label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-foreground = ${colors.orange}
 label-urgent-padding = 1
 
 label-empty = %name%

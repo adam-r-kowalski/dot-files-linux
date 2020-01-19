@@ -3,7 +3,7 @@
 #
 
 super + Return
-	optirun kitty
+	kitty
 
 super + @space
 	dmenu_run -nb '#292D3E' -nf '#EEFFFF'
@@ -139,7 +139,7 @@ super + {Left,Down,Up,Right}
 F1
 	amixer set Master toggle
 {F2,F3}
-	amixer set Master 1{-,+} unmute
+	amixer -c0 set Master 1{-,+} unmute
 F4
 	amixer set Capture toggle
 
@@ -147,7 +147,7 @@ XF86AudioMute
 	amixer set Master toggle
 
 XF86Audio{Raise,Lower}Volume
-	amixer set Master 1{+,-} unmute
+	amixer -c0 set Master 1{+,-} unmute
 
 XF86AudioMicMute
 	amixer set Capture toggle
