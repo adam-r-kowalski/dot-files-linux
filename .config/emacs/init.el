@@ -47,6 +47,7 @@
 
 (use-package doom-modeline
   :ensure t
+  :init (setq doom-modeline-icon (display-graphic-p))
   :config (doom-modeline-mode 1))
 
 (use-package company
@@ -115,7 +116,8 @@
  "s" 'eshell
  "c" 'comment-line
  "w" '(nil :which-key "window")
- "d" 'smerge-mode)
+ "d" 'smerge-mode
+ "k" 'kill-buffer-and-window)
 
 (general-define-key
  :states 'visual
@@ -198,6 +200,25 @@
   "l" 'smerge-keep-lower
   "a" 'smerge-keep-all)
 
+(use-package beacon
+  :ensure t
+  :config (beacon-mode 1))
+
+(use-package all-the-icons
+  :ensure t)
+
+(use-package all-the-icons-ivy
+  :ensure t
+  :config (all-the-icons-ivy-setup))
+
+(use-package all-the-icons-dired
+  :ensure t
+  :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+(use-package ranger
+  :ensure t
+  :config (ranger-override-dired-mode t))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -206,7 +227,7 @@
  '(auth-source-save-behavior nil)
  '(doom-modeline-mode t)
  '(package-selected-packages
-   '(evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
+   '(all-the-icons-dired all-the-icons-ivy beacon indent-guide evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
