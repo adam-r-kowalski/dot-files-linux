@@ -100,6 +100,11 @@
   :init (setq which-key-popup-type 'minibuffer)
   :config (which-key-mode))
 
+(defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 (general-define-key 
  :states '(normal emacs)
  :keymaps 'override
@@ -117,7 +122,8 @@
  "c" 'comment-line
  "w" '(nil :which-key "window")
  "d" 'smerge-mode
- "k" 'kill-buffer-and-window)
+ "k" 'kill-buffer-and-window
+ "K" 'kill-other-buffers)
 
 (general-define-key
  :states 'visual

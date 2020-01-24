@@ -136,7 +136,7 @@ format-connected-foreground = ${colors.foreground}
 format-connected-padding = 0
 
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.purple}
+format-disconnected-background = ${colors.background}
 format-disconnected-foreground = ${colors.foreground}
 format-disconnected-padding = 0
 
@@ -159,7 +159,7 @@ format-connected-foreground = ${colors.foreground}
 format-connected-padding = 1
 
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.mf}
+format-disconnected-background = ${colors.background}
 format-disconnected-foreground = ${colors.foreground}
 format-disconnected-padding = 1
 

@@ -27,6 +27,10 @@ Print
 	sleep 0.2; \
 	scrot ~/screenshots/screenshot.png -s
 
+super + Print
+	sleep 0.2; \
+	scrot ~/screenshots/screenshot.png
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
