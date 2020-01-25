@@ -56,6 +56,10 @@
   :config
   (global-company-mode))
 
+(use-package company-box
+  :ensure t
+  :hook (company-mode . company-box-mode))
+
 (use-package exec-path-from-shell
   :ensure t
   :config (exec-path-from-shell-initialize))
@@ -67,6 +71,11 @@
   :config
   (ivy-mode 1)
   (define-key ivy-minibuffer-map (kbd "<escape>") 'minibuffer-keyboard-quit))
+
+(use-package ivy-posframe
+  :ensure t
+  :init (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  :config (ivy-posframe-mode 1))
 
 (use-package counsel
   :ensure t)
@@ -233,7 +242,7 @@
  '(auth-source-save-behavior nil)
  '(doom-modeline-mode t)
  '(package-selected-packages
-   '(all-the-icons-dired all-the-icons-ivy beacon indent-guide evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
+   '(company-box ivy-posframe all-the-icons-dired all-the-icons-ivy beacon indent-guide evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
