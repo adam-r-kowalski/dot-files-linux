@@ -2,7 +2,7 @@
 
 sxhkd &
 dunst &
-optirun picom &
+picom --experimental-backends &
 
 bspc monitor eDP1 -n 0 -d 1 2 3 4 5 6 7 8 9 10
 # bspc monitor eDP1 -n 0 -d 1 2 3 4 5
