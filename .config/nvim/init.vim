@@ -1,23 +1,22 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 Plug 'adam-r-kowalski/vim-test'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-dispatch'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ziglang/zig.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-abolish'
-Plug 'edkolev/tmuxline.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 syntax enable
@@ -31,10 +30,11 @@ set shell=bash
 set number
 set relativenumber
 
-let ayucolor="mirage"
-colorscheme ayu
+colorscheme nord
 
 set noswapfile
+
+set noshowmode
 
 set clipboard=unnamedplus
 
@@ -83,21 +83,26 @@ xmap <localleader>e <Plug>SlimeRegionSend
 nmap <localleader>e <Plug>SlimeParagraphSend
 nmap <localleader>E <Plug>SlimeConfig
 
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
-let g:slime_dont_ask_default = 1
+let g:slime_target = "neovim"
 
 nnoremap <M-s> :wa <cr>
 vnoremap <M-s> :wa <cr>
 inoremap <M-s> <C-o>:wa <cr>
 
-let test#strategy = "dispatch"
+let test#strategy = "neovim"
 let test#python#runner = 'pytest'
 let test#python#pytest#options = '-p no:warnings'
 
-let g:airline_theme='ayu'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
+let g:lightline = {
+	\ 'colorscheme': 'nord',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead'
+	\ },
+	\ }
 
 let g:markdown_fenced_languages = [
       \ 'vim',
@@ -110,10 +115,6 @@ autocmd FileType zig let b:dispatch = 'zig build run'
 
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
-
-
-" play macro stored in q register
-nnoremap <leader>m @q
 
 " enable transparancy
 hi Normal guibg=NONE ctermbg=NONE

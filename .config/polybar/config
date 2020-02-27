@@ -17,26 +17,12 @@
 ;==========================================================
 
 [colors]
-background = #292D3E
-background-alt = #242837
-foreground = #FFFFFF
-foreground-alt = #BFC7D5
-primary = #EEFFFF
-secondary = #EC6798
-alert = #bd2c40
-mf = #C4C7C5
-red = #EC7875
-blue = #75A4CD
-lime = #B9C244
-green = #61C766
-pink = #EC6798
-purple = #BE78D1
-cyan = #00C7DF
-amber = #EDB83F
-grey = #8C8C8C
-orange = #E57C46
-teal = #00B19F
-indigo = #6C77BB
+background = #2E3440
+foreground = #D8DEE9
+red = #BF616A
+blue = #81A1C1
+green = #A3BE8C
+magenta = #B48EAD
 
 [bar/main]
 dpi = 260
@@ -86,7 +72,7 @@ label-occupied-padding = 1
 
 label-urgent = %name%!
 label-urgent-background = ${colors.background}
-label-urgent-foreground = ${colors.orange}
+label-urgent-foreground = ${colors.magenta}
 label-urgent-padding = 1
 
 label-empty = %name%
@@ -291,7 +277,6 @@ type = internal/battery
 
 battery = BAT0
 adapter = AC
-pink = #EC6798
 
 poll-interval = 2
 time-format = %H:%M
