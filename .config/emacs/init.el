@@ -73,11 +73,6 @@
   (ivy-mode 1)
   (define-key ivy-minibuffer-map (kbd "<escape>") 'minibuffer-keyboard-quit))
 
-(use-package ivy-posframe
-  :ensure t
-  :init (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  :config (ivy-posframe-mode 1))
-
 (use-package counsel
   :ensure t)
 
@@ -128,6 +123,7 @@
  "p" 'counsel-projectile-switch-project
  "r" 'counsel-buffer-or-recentf
  "m" 'magit
+ "B" 'magit-blame
  "s" 'eshell
  "c" 'comment-line
  "w" '(nil :which-key "window")
@@ -196,6 +192,9 @@
  "b" 'elpy-shell-send-buffer
  "t" 'elpy-test
  "d" 'elpy-goto-definition-or-rgrep
+ "h" 'elpy-doc
+ "r" 'xref-find-references
+ "n" 'elpy-multiedit-python-symbol-at-point
  "p" 'pdb)
 
 (use-package zig-mode
@@ -231,16 +230,14 @@
   :ensure t
   :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
-(use-package ranger
-  :ensure t
-  :config (ranger-override-dired-mode t))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
+ '(custom-safe-themes
+   '("dd854be6626a4243375fd290fec71ed4befe90f1186eb5b485a9266011e15b29" "2c4222fc4847588deb57ce780767fac376bbf5bdea5e39733ff5e380a45e3e46" "8c75e2bdf8d1293c77a752dd210612cfb99334f7edd360a42a58a8497a078b35" "5e0b63e0373472b2e1cf1ebcc27058a683166ab544ef701a6e7f2a9f33a23726" "f7b230ac0a42fc7e93cd0a5976979bd448a857cd82a097048de24e985ca7e4b2" "669e05b25859b9e5b6b9809aa513d76dd35bf21c0f16d8cbb80fb0727dc8f842" "5c9a906b076fe3e829d030a404066d7949e2c6c89fc4a9b7f48c054333519ee7" "e7666261f46e2f4f42fd1f9aa1875bdb81d17cc7a121533cad3e0d724f12faf2" "de43de35da390617a5b3e39b6b27c107cc51271eb95cceb1f43d13d9647c911d" "e47c0abe03e0484ddadf2ae57d32b0f29f0b2ddfe7ec810bd6d558765d9a6a6c" "b9dda6ca36e825766dfada5274cf18d8a5bce70676b786e3260094e0cd8c0e62" "bc99493670a29023f99e88054c9b8676332dda83a37adb583d6f1e4c13be62b8" "5091eadbb87fa0a168a65f2c3e579d1a648d764f12ab9d3ab7bdefca709cd2a5" "32fd809c28baa5813b6ca639e736946579159098d7768af6c68d78ffa32063f4" "9d54f3a9cf99c3ffb6ac8e84a89e8ed9b8008286a81ef1dbd48d24ec84efb2f1" "a4b9eeeabde73db909e6b080baf29d629507b44276e17c0c411ed5431faf87dd" "dc677c8ebead5c0d6a7ac8a5b109ad57f42e0fe406e4626510e638d36bcc42df" "1ca1f43ca32d30b05980e01fa60c107b02240226ac486f41f9b790899f6f6e67" "15ba8081651869ec689c9004288bed79003de5b4ee9c51a9d4a208d9e3439706" "468e235ebcb0d75e8bc0849e6b8a0bf5e8560ba3180b17ce21599d60a35e5816" "1897b97f63e91a792e8540c06402f29d5edcbfb0aafd64b1b14270663d6868ee" "a02836a5807a687c982d47728e54ff42a91bc9e6621f7fe7205b0225db677f07" "4b0b568d63b1c6f6dddb080b476cfba43a8bbc34187c3583165e8fb5bbfde3dc" "a4fa3280ffa1f2083c5d4dab44a7207f3f7bcb76e720d304bd3bd640f37b4bef" "c6b93ff250f8546c7ad0838534d46e616a374d5cb86663a9ad0807fd0aeb1d16" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "0fe9f7a04e7a00ad99ecacc875c8ccb4153204e29d3e57e9669691e6ed8340ce" "53f8223005ceb058848fb92c2c4752ffdfcd771f8ad4324b3d0a4674dec56c44" default))
  '(doom-modeline-mode t)
  '(package-selected-packages
    '(company-box ivy-posframe all-the-icons-dired all-the-icons-ivy beacon indent-guide evil-collection pdf-tools flycheck zig-mode zig exec-path-from-shell dashboard rotate which-key general evil-magit magit counsel-projectile counsel doom-modeline doom-themes evil-escape projectile ivy elpy use-package evil)))
